@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        img{
+            height: 350px;
+            width: 300px;
+        }
+        input, button{
+            margin-top: -20px;
+            height: 40px;
+            width: 280px;
+            font-size: x-large;
+        }
+        label{
+            font-size: 40px                     ;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="img/smily.jfif" alt="unavailable"> <br/> <br/>
+        <label >Calculate your Love</label> <br/> <br/>
+        <label id="percent"></label> <br/> <br/>
+        <input type="text" id="text1" placeholder="Enter your Name"> <br/> <br/>
+        <input type="text" id="text2" placeholder="Enter your Love"> <br/> <br/>
+        <button onclick="love()">Calculate Love</button>  
+    </div>
+
+     <script>
+
+    function love(){
+        let text1 = document.getElementById("text1").value;
+        let text2 = document.getElementById("text2").value;
+
+        if(text1 && text2){
+                
+           let total=Math.floor(Math.random()*100);
+            document.getElementById("percent").innerText= total
+            str=(text1+text2).replace(/\s/g,"")
+            str= str.toLowerCase();
+            if(localStorage.getItem(str)){
+                   total= localStorage.getItem(str);
+            }else{
+                localStorage.setItem(str,total)
+            }
+          document.getElementById("percent").innerText= total  
+            
+        }else{
+            alert("Please enter valid name....")
+        }
+    }
+     </script>   
+</body>
+</html>
